@@ -34,4 +34,15 @@ module.exports = function(app) {
             .catch(err => res.status(400).json(err));
     });
 
+    // update workout
+    app.put("/api/workouts/:id", ({ body, params }, res) => {
+        Workout
+            .findByIdAndUpdate(
+                { _id: params.id },            
+                { $push: { exercises: body } }
+            )
+            .then(dbWorkout => res.json(dbWorkout))
+            .catch(err => res.status(400).json(err))
+    });
+
 }
