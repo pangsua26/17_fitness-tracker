@@ -25,4 +25,13 @@ module.exports = function(app) {
                 res.status(400).json(err)
             });
     });
+
+    // create workout
+    app.post("/api/workouts", ({ body }, res) => {
+        Workout
+            .create(body)
+            .then(dbWorkout => res.json(dbWorkout))
+            .catch(err => res.status(400).json(err));
+    });
+
 }
