@@ -9,6 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // routes
+require("./routes/html-routes")(app);
+require("./routes/api-routes")(app);
 
 app.use(express.static("public"));
 
